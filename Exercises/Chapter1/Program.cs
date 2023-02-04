@@ -53,11 +53,12 @@
             //Write a program that reads from the console the radius
             //"r" of a circle and prints its perimeter and area.
 
-            {
-                Console.WriteLine("Input the radius (r) of the circle: ");
-                    int a = int.Parse(Console.ReadLine());
-                Console.WriteLine("The Perimeter of the circle with radius r = {0} is: ", 2 * Math.PI * a );
-            }
+          //  {
+          //      Console.WriteLine("Input the radius (r) of the circle: ");
+          //          int a = int.Parse(Console.ReadLine());
+          //      Console.WriteLine("The Perimeter of the circle with radius r = {0} is: ", 2 * Math.PI * a );
+          //      Console.WriteLine("  ");
+          //  }
 
             //Exercise 1.2:-------------------------------------------------------
             //  A given company has name, address, phone number, fax
@@ -66,27 +67,48 @@
             //  information about the company and its manager and then
             //  prints it on the console.
 
-            {
-                Console.WriteLine("Input Name of Company: ");
-                string companyName = Console.ReadLine();
-                Console.WriteLine("Input Company's Address: ");
-                string companyAddress = Console.ReadLine();
-                Console.WriteLine("Input Company's Phone Number: ");
-                string companyPhoneNumber = Console.ReadLine();
-                Console.WriteLine("Input Manager's First Name: ");
-                string managerFirstName = Console.ReadLine();
-                Console.WriteLine("Input Namager's Last Name: ");
-                string managerLastName = Console.ReadLine();
-                Console.WriteLine("Input Manager's Phone number: ");
-                string managerPhoneNumber = Console.ReadLine();
-                Console.WriteLine("Details of Your COmpany and it's Manager: ");
-                Console.WriteLine("Company Name: {0}", companyName);
-                Console.WriteLine("  Company Address: {1}", companyAddress);
-                Console.WriteLine("Company Phone Number: {2}", companyPhoneNumber);
-                Console.WriteLine("Manager's First Name: {3}", managerFirstName);
-                Console.WriteLine("Manager's Last Name: {4}", managerLastName);
-                Console.WriteLine("Manager's Phone Number: {5}", managerPhoneNumber) ;
+          // {
+          //     Console.WriteLine("Input Name of Company: ");
+          //     string companyName = Console.ReadLine();
+          //     Console.WriteLine("Input Company's Address: ");
+          //     string companyAddress = Console.ReadLine();
+          //     Console.WriteLine("Input Company's Phone Number: ");
+          //     string companyPhoneNumber = Console.ReadLine();
+          //     Console.WriteLine("Input Manager's First Name: ");
+          //     string managerFirstName = Console.ReadLine();
+          //     Console.WriteLine("Input Namager's Last Name: ");
+          //     string managerLastName = Console.ReadLine();
+          //     Console.WriteLine("Input Manager's Phone number: ");
+          //     string managerPhoneNumber = Console.ReadLine();
+          //     Console.WriteLine("Details of Your COmpany and it's Manager: ");
+          //     Console.WriteLine("Company Name: {0}, Company Address: {1}", companyName, companyAddress) ;
+          //     //Console.WriteLine("Company Address: {0}", companyAddress);
+          //     Console.WriteLine("Company Phone Number: {0}", companyPhoneNumber);
+          //     Console.WriteLine("Manager's First Name: {0}", managerFirstName);
+          //     Console.WriteLine("Manager's Last Name: {0}", managerLastName);
+          //     Console.WriteLine($"Manager's Phone Number: {managerPhoneNumber}") ;
+          //     Console.WriteLine("  ");
+          // }
+
+
+            //3. Write a program that reads an integer number n
+            //from the console. After that reads n numbers from
+            //the console and prints their sum.
+
+            Console.WriteLine("How many numbers do you want to add up? ");
+            int nNumbers = int.Parse(Console.ReadLine());
+            int number = 0;
+            for (int i = 0; i < nNumbers; i++)
+            { 
+                Console.WriteLine("Input a number: ");
+                number = int.Parse(Console.ReadLine());
+
+                number++;
             }
+            Console.WriteLine($"The Sum of the 5 numbers you have input is:  {number}");
         }
+
+
+
     }
 }
