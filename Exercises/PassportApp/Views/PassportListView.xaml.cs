@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PassportApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,17 @@ namespace PassportApp.Views
         public PassportListView()
         {
             InitializeComponent();
+            DataContext = new PassportListViewModel();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

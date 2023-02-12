@@ -11,14 +11,14 @@
               SelectionMode="Single">
 
         <DataGrid.Columns>
-        </DataGrid.Columns>
             <DataGridTextColumn Header="Id" IsReadOnly="True"/><DataGridTextColumn Header="Id" IsReadOnly="True"/>
             <DataGridTextColumn Header="Name" IsReadOnly="False"/>
             <DataGridTextColumn Header="Courses Passed" IsReadOnly="True"/>
             <DataGridTextColumn Header="Date of Birth" IsReadOnly="False"/>
             <DataGridTextColumn Header="Age" IsReadOnly="True"/>
             <DataGridTextColumn Header="Graduated" IsReadOnly="True"/>
+        </DataGrid.Columns>
 
     </DataGrid>
 
-    <</UserControl>
+    </UserControl>

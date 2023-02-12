@@ -7,21 +7,30 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel>
-        <Label Content="Destination"/>
-        <TextBox/>
-        <Button Content="Travel"/>
 
-        <DataGrid AutoGenerateColumns="False" SelectionMode="Single">
+        <Separator DockPanel.Dock="Bottom" Width="10" Height="10" Background="Transparent"/>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
+            
+            <Label Content="Destination"/>
+            <Separator Width="10" Height="10" Background="Transparent"/>
+            <TextBox MinWidth="100" TextChanged="TextBox_TextChanged" Text="{Binding Path=DestinationCountry, UpdateSourceTrigger=PropertyChanged}"/>
+            <Separator Width="10" Height="10" Background="Transparent"/>
+            <Button Content="Travel"/>
+            
+        </StackPanel>
+        <Separator DockPanel.Dock="Bottom" Width="10" Height="10" Background="Transparent"/>
+
+        <DataGrid AutoGenerateColumns="False" SelectionMode="Single" ItemsSource="{Binding Path=Passports}" SelectedItem="{Binding Path=SelectedPassport}" SelectionChanged="DataGrid_SelectionChanged">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" IsReadOnly="True"/>
-                <DataGridTextColumn Header="First Name"/>
-                <DataGridTextColumn Header="Last NAme"/>
-                <DataGridTextColumn Header="Date of Birth"/>
-                <DataGridTextColumn Header="Age" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Country"/>
-                <DataGridTextColumn Header="Current Location" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Traveling" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding Path=Id}"/>
+                <DataGridTextColumn Header="First Name" Binding="{Binding Path= FirstName, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Last NAme" Binding="{Binding Path= LastName, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Date of Birth" IsReadOnly="True" Binding="{Binding Path= DateOfBirth}"/>
+                <DataGridTextColumn Header="Age" IsReadOnly="True" Binding="{Binding Path= Age}"/>
+                <DataGridTextColumn Header="Country" Binding="{Binding Path=Country, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Current Location" IsReadOnly="True" Binding="{Binding Path=CurrentLocation}"/>
+                <DataGridTextColumn Header="Traveling" IsReadOnly="True" Binding="{Binding Path=Traveling}"/>
             </DataGrid.Columns>
 
         </DataGrid>
