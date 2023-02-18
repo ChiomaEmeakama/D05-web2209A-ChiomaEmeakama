@@ -15,8 +15,8 @@
             <Separator Width="10" Height="10" Background="Transparent"/>
             <TextBox MinWidth="100" TextChanged="TextBox_TextChanged" Text="{Binding Path=DestinationCountry, UpdateSourceTrigger=PropertyChanged}"/>
             <Separator Width="10" Height="10" Background="Transparent"/>
-            <Button Content="Travel"/>
-            
+            <Button Content="Travel" Command="{Binding Path=TravelCommand}"/>
+
         </StackPanel>
         <Separator DockPanel.Dock="Bottom" Width="10" Height="10" Background="Transparent"/>
 

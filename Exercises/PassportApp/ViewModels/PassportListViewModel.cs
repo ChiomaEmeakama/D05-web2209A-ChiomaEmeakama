@@ -13,7 +13,8 @@ namespace PassportApp.ViewModels
     internal class PassportListViewModel
     {
         public ObservableCollection<Passport> Passports { get; }
-
+        
+        public DelegateCommand TravelCommand { get; }
         public PassportListViewModel()
         {
             Passports = new ObservableCollection<Passport>();
@@ -26,7 +27,7 @@ namespace PassportApp.ViewModels
 
             }
 
-            TravelCommand = new ObservableCollection<DelegateCommand>();
+            TravelCommand = new DelegateCommand(Travel);
             {
                  // TODO
             }
@@ -41,7 +42,6 @@ namespace PassportApp.ViewModels
             Trace.WriteLine("Travel");
         }
 
-        public ObservableCollection<DelegateCommand> TravelCommand { get; }
 
     }
 }
