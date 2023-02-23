@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PassportApp.ViewModels
 {
-    internal class PassportListViewModel
+    internal class PassportListViewModel 
     {
         public ObservableCollection<Passport> Passports { get; }
         

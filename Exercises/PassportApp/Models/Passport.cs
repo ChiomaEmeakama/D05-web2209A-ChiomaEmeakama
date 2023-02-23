@@ -48,6 +48,7 @@ namespace PassportApp.Models
         private string firstName;
         private string lastName;
         private string country;
+        private Passport passport;
 
         public Passport(int id, string firstName, string lastName, DateTime dateOfBirth, string country)
         {
@@ -63,6 +64,12 @@ namespace PassportApp.Models
             {
                 new TravelEvent(id, country, DateTime.UtcNow)
             };
+        }
+
+        public Passport(int id, Passport passport)
+        {
+            Id = id;
+            this.passport = passport;
         }
 
         private static void ValidateParameters(string firstName, string lastName, DateTime dateOfBirth, string country)

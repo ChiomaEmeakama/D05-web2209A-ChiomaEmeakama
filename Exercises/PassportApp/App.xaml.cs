@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using PassportApp.Models;
+using PassportApp.Repository;
 
 namespace PassportApp
 {
@@ -13,5 +15,12 @@ namespace PassportApp
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            PassportRepository repository = new PassportRepository();
+            //var alfredo = repository.GetPassport(100);
+            List<Passport> passport = repository.GetPassports("Alfredo","Parreira");
+
+        }
     }
 }
