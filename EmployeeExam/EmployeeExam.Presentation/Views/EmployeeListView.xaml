@@ -1,0 +1,336 @@
+﻿<UserControl x:Class="EmployeeExam.Presentation.Views.EmployeeListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:EmployeeExam.Presentation.Views"
+             mc:Ignorable="d"
+             MinWidth="744" MinHeight="516">
+
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="10, 5"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Separator">
+            <Setter Property="Width" Value="16"/>
+            <Setter Property="Height" Value="16"/>
+            <Setter Property="Opacity" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+        </Style>
+        <Style TargetType="Border">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#cccccc"/>
+        </Style>
+    </UserControl.Resources>
+
+    <DockPanel>
+
+        <DockPanel DockPanel.Dock="Right">
+            <Border HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    MinHeight="200"
+                    DockPanel.Dock="Top">
+
+                <StackPanel Orientation="Vertical"
+                            VerticalAlignment="Center"
+                            MinWidth="160"
+                            Margin="10">
+
+                    <StackPanel.Resources>
+
+                        <Style TargetType="Separator">
+                            <Setter Property="Width" Value="10"/>
+                            <Setter Property="Height" Value="10"/>
+                            <Setter Property="Opacity" Value="0"/>
+                            <Setter Property="Margin" Value="0"/>
+                        </Style>
+
+                    </StackPanel.Resources>
+
+                    <Label Content="No selected employee"
+                            FontSize="14"
+                            HorizontalContentAlignment="Center"/>
+
+                    <Separator/>
+
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="60"/>
+                            <ColumnDefinition MinWidth="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Hours worked"
+                               Grid.Column="0" Grid.Row="0"/>
+                        <Label Content="0"
+                               Grid.Column="1" Grid.Row="0"/>
+
+                        <Label Content="Hours paid"
+                               Grid.Column="0" Grid.Row="1"/>
+                        <Label Content="0"
+                               Grid.Column="1" Grid.Row="1"/>
+
+                        <Label Content="Hours unpaid"
+                               Grid.Column="0" Grid.Row="2"/>
+                        <Label Content="0"
+                               Grid.Column="1" Grid.Row="2"/>
+
+                        <Label Content="Hourly wage"
+                               Grid.Column="0" Grid.Row="3"/>
+                        <Label Content="$0.00"
+                               ContentStringFormat="{}{0:c}"
+                               Grid.Column="1" Grid.Row="3"/>
+
+                        <Label Content="Payment received"
+                               Grid.Column="0" Grid.Row="4"/>
+                        <Label Content="$0.00"
+                               ContentStringFormat="{}{0:c}"
+                               Grid.Column="1" Grid.Row="4"/>
+
+                        <Label Content="Payment due"
+                               Grid.Column="0" Grid.Row="5"/>
+                        <Label Content="$0.00"
+                               ContentStringFormat="{}{0:c}"
+                               Grid.Column="1" Grid.Row="5"/>
+
+                    </Grid>
+
+                </StackPanel>
+
+            </Border>
+
+            <Separator DockPanel.Dock="Top"/>
+
+            <Border HorizontalAlignment="Stretch"
+                    VerticalAlignment="Bottom"
+                    DockPanel.Dock="Top">
+
+                <StackPanel Orientation="Vertical"
+                            Margin="10">
+
+                    <StackPanel.Resources>
+
+                        <Style TargetType="Separator">
+                            <Setter Property="Width" Value="10"/>
+                            <Setter Property="Height" Value="10"/>
+                            <Setter Property="Opacity" Value="0"/>
+                            <Setter Property="Margin" Value="0"/>
+                        </Style>
+
+                    </StackPanel.Resources>
+
+                    <DockPanel>
+                        <Label Content="Hours"
+                               DockPanel.Dock="Left"/>
+                        <Button Content="Log hours worked"
+                                DockPanel.Dock="Right"/>
+                        <Separator Width="15" DockPanel.Dock="Right"/>
+                        <TextBox Text=""
+                                 HorizontalContentAlignment="Center"
+                                 DockPanel.Dock="Left"/>
+                    </DockPanel>
+
+                    <Separator/>
+
+                    <DockPanel>
+                        <Label Content="Raise"
+                               DockPanel.Dock="Left"/>
+                        <Button Content="Give employee raise"
+                                DockPanel.Dock="Right"/>
+                        <Separator DockPanel.Dock="Right"/>
+                        <TextBox Text=""
+                                 HorizontalContentAlignment="Center"
+                                 DockPanel.Dock="Left"/>
+                    </DockPanel>
+
+                    <Separator/>
+
+                    <DockPanel>
+                        <Label Content="Payment due"
+                               DockPanel.Dock="Left"/>
+                        <Button Content="Pay employee"
+                                DockPanel.Dock="Right"/>
+                        <Separator DockPanel.Dock="Right"/>
+                        <TextBlock Text="$0.00"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   MinWidth="60"
+                                   DockPanel.Dock="Left"/>
+                    </DockPanel>
+
+                    <Separator Height="20"/>
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center">
+
+                        <Button Content="Remove employee"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+            </Border>
+
+            <Separator DockPanel.Dock="Top"/>
+
+            <Border HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    DockPanel.Dock="Top">
+
+                <DockPanel HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Margin="10">
+
+                    <DockPanel.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                        </Style>
+                        <Style TargetType="TextBox">
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="MinWidth" Value="140"/>
+                            <Setter Property="MinHeight" Value="22"/>
+                        </Style>
+                        <Style TargetType="DatePicker">
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="MinWidth" Value="140"/>
+                        </Style>
+                        <Style TargetType="Separator">
+                            <Setter Property="Width" Value="10"/>
+                            <Setter Property="Height" Value="10"/>
+                            <Setter Property="Opacity" Value="0"/>
+                            <Setter Property="Margin" Value="0"/>
+                        </Style>
+                    </DockPanel.Resources>
+
+                    <DockPanel DockPanel.Dock="Top">
+                        <TextBox Text=""
+                                 DockPanel.Dock="Right"/>
+                        <Label Content="First name"
+                               DockPanel.Dock="Right"/>
+                    </DockPanel>
+
+                    <Separator DockPanel.Dock="Top"/>
+
+                    <DockPanel DockPanel.Dock="Top">
+                        <TextBox Text=""
+                                 DockPanel.Dock="Right"/>
+                        <Label Content="Last name"
+                               DockPanel.Dock="Right"/>
+                    </DockPanel>
+
+                    <Separator DockPanel.Dock="Top"/>
+
+                    <DockPanel DockPanel.Dock="Top">
+                        <DatePicker DockPanel.Dock="Right"/>
+                        <Label Content="Date of birth"
+                               DockPanel.Dock="Right"/>
+                    </DockPanel>
+
+                    <Separator DockPanel.Dock="Top"/>
+
+                    <DockPanel DockPanel.Dock="Top">
+                        <TextBox Text=""
+                                 DockPanel.Dock="Right"/>
+                        <Label Content="Job title"
+                               DockPanel.Dock="Right"/>
+                    </DockPanel>
+
+                    <Separator DockPanel.Dock="Top"/>
+
+                    <DockPanel DockPanel.Dock="Top">
+
+                        <Separator Width="80"
+                                   DockPanel.Dock="Right"/>
+
+                        <TextBox Text=""
+                                 MinWidth="60" MaxWidth="60"
+                                 DockPanel.Dock="Right"/>
+
+                        <Label Content="Hourly wage"
+                               DockPanel.Dock="Right"/>
+
+                    </DockPanel>
+
+                    <StackPanel>
+
+                        <Separator Height="20"/>
+
+                        <Button Content="Add employee"
+                                HorizontalAlignment="Right"
+                                Padding="10, 5"/>
+
+                    </StackPanel>
+
+                </DockPanel>
+
+            </Border>
+
+        </DockPanel>
+
+        <Separator DockPanel.Dock="Right"/>
+
+        <DockPanel HorizontalAlignment="Right"
+                   DockPanel.Dock="Top">
+
+            <Label Content="Filter by name"
+                   DockPanel.Dock="Left"/>
+            <Separator Width="4" Height="10"
+                       DockPanel.Dock="Left"/>
+            <Button Content="Clear"
+                    DockPanel.Dock="Right"/>
+            <Separator Width="10" Height="10"
+                       DockPanel.Dock="Right"/>
+            <TextBox Text=""
+                     VerticalContentAlignment="Center"
+                     MinWidth="100"
+                     DockPanel.Dock="Left"/>
+
+        </DockPanel>
+
+        <Separator DockPanel.Dock="Top"/>
+
+        <DataGrid AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  SelectionMode="Single"
+                  MinHeight="200">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"
+                                    Width="Auto"
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn Header="First name"
+                                    Width="Auto"/>
+                <DataGridTextColumn Header="Last name"
+                                    Width="Auto"/>
+                <DataGridTextColumn Header="Date of birth"
+                                    Width="Auto"/>
+                <DataGridTextColumn Header="Job title"
+                                    Width="Auto"/>
+                <DataGridTextColumn Header="Hourly wage"
+                                    Width="Auto"
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn Header="Hours worked"
+                                    Width="Auto"
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn Header="Payment received"
+                                    Width="Auto"
+                                    IsReadOnly="True"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </DockPanel>
+
+</UserControl>

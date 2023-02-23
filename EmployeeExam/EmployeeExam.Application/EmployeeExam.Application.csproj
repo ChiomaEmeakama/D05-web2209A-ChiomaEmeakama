@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\D05-Web2209A\Utility\Chevalier.Utility\Chevalier.Utility.csproj" />
+    <ProjectReference Include="..\EmployeeExam.Domain\EmployeeExam.Domain.csproj" />
+    <ProjectReference Include="..\EmployeeExam.Persistence\EmployeeExam.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
