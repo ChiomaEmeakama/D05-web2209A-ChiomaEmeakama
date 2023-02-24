@@ -1,22 +1,56 @@
-﻿using EmployeeExam.Domain.Exceptions;
+﻿using Chevalier.Utility.ViewModels;
+using EmployeeExam.Domain.Exceptions;
+using System.ComponentModel;
 
 namespace EmployeeExam.Domain.Entities
 {
-    public class Employee
+    public class Employee : ViewModel
     {
         // TODO: Enforce encapsulation and business rules by:
         // Making property set accessors private, and/or
         // Manually defining set accessors to include validation (conditional validation)
 
+        private string lastName;
+        private string firstName;
         public int Id { get; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string FirstName
+        {
+            get
+            {
+                return FirstName;
+            }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    firstName = value;
+                    NotifyPropertyChanged (nameof(FirstName));
+                }
+            }
+
+        }public string LastName
+        {
+            get
+            {
+                return lastName;
+            }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    firstName = value;
+                    NotifyPropertyChanged (nameof(LastName));
+                }
+            }
+        }
+
+        
         public DateTime DateOfBirth { get; set; }
         public string JobTitle { get; set; }
-        public decimal HourlyWage { get; set; }
-        public decimal HoursWorked { get; set; }
-        public decimal HoursPaid { get; set; }
-        public decimal PaymentReceived { get; set; } 
+        public decimal HourlyWage { get; private set; }
+        public decimal HoursWorked { get; private set; }
+        public decimal HoursPaid { get; private set; }
+        public decimal PaymentReceived { get; private set; } 
 
         public string FullName
         {
