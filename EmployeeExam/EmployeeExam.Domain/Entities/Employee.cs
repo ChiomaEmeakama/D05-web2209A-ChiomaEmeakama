@@ -12,6 +12,7 @@ namespace EmployeeExam.Domain.Entities
 
         private string lastName;
         private string firstName;
+        private string jobTitle;
         public int Id { get; }
         public string FirstName
         {
@@ -28,7 +29,9 @@ namespace EmployeeExam.Domain.Entities
                 }
             }
 
-        }public string LastName
+        }
+        
+        public string LastName
         {
             get
             {
@@ -44,9 +47,24 @@ namespace EmployeeExam.Domain.Entities
             }
         }
 
+        public string JobTitle
+        {
+            get
+            {
+                return jobTitle;
+            }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    firstName = value;
+                    NotifyPropertyChanged (nameof(JobTitle));
+                }
+            }
+        }
+
         
         public DateTime DateOfBirth { get; set; }
-        public string JobTitle { get; set; }
         public decimal HourlyWage { get; private set; }
         public decimal HoursWorked { get; private set; }
         public decimal HoursPaid { get; private set; }
@@ -61,15 +79,8 @@ namespace EmployeeExam.Domain.Entities
             }
         }
 
-        public decimal HoursUnpaid
-        {
-            get
-            {
-                // TODO
-                return 0;
-            }
-        }
-
+        public decimal HoursUnpaid => (HoursWorked - HoursPaid);
+        
         public decimal PaymentDue
         {
             get
