@@ -16,7 +16,7 @@ namespace EmployeeExam.Domain.Entities
         public decimal HourlyWage { get; set; }
         public decimal HoursWorked { get; set; }
         public decimal HoursPaid { get; set; }
-        public decimal PaymentReceived { get; set; }
+        public decimal PaymentReceived { get; set; } 
 
         public string FullName
         {
