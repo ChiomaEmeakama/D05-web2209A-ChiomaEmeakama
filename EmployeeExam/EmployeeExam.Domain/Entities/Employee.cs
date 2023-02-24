@@ -68,27 +68,13 @@ namespace EmployeeExam.Domain.Entities
         public decimal HourlyWage { get; private set; }
         public decimal HoursWorked { get; private set; }
         public decimal HoursPaid { get; private set; }
-        public decimal PaymentReceived { get; private set; } 
+        public decimal PaymentReceived { get; private set; }
 
-        public string FullName
-        {
-            get
-            {
-                // TODO
-                return null;
-            }
-        }
+        public string FullName => "FirstName" + "LastName";
 
-        public decimal HoursUnpaid => (HoursWorked - HoursPaid);
-        
-        public decimal PaymentDue
-        {
-            get
-            {
-                // TODO
-                return 0;
-            }
-        }
+        public decimal HoursUnpaid => HoursWorked - HoursPaid;
+
+        public decimal PaymentDue => HoursUnpaid * HourlyWage;
 
         public Employee(int id, Employee other)
             : this(id, other.FirstName, other.LastName, other.DateOfBirth, other.JobTitle, other.HourlyWage, other.HoursWorked, other.HoursPaid, other.PaymentReceived)
@@ -100,12 +86,19 @@ namespace EmployeeExam.Domain.Entities
         /// <exception cref="EmployeeException">If hourly wage is negative.</exception>
         public Employee(string firstName, string lastName, DateTime dateOfBirth, string jobTitle, decimal hourlyWage)
             : this(id: 0, firstName, lastName, dateOfBirth, jobTitle, hourlyWage, hoursWorked: 0, hoursPaid: 0, paymentReceived: 0)
-        { }
+        {
+            if (firstName != null) 
+                throw new ArgumentException("First name must not be null.", nameof(firstName));
+            if (lastName != null)
+                throw new ArgumentException("Last name must not be null.", nameof(lastName));
+            if (jobTitle != null)
+                throw new ArgumentException("Job title must not be null.", nameof(jobTitle));
+            /// <exception cref="ArgumentNullException">If first name, last name, or job title is null.</exception>
+            /// <exception cref="EmployeeException">If first name, last name, or job title is empty or whitespace.</exception>
+            /// <exception cref="EmployeeException">If date of birth is not in the past.</exception>
+            /// <exception cref="EmployeeException">If hourly wage, hours worked, hours paid, or payment received is negative.</exception>
+        }
 
-        /// <exception cref="ArgumentNullException">If first name, last name, or job title is null.</exception>
-        /// <exception cref="EmployeeException">If first name, last name, or job title is empty or whitespace.</exception>
-        /// <exception cref="EmployeeException">If date of birth is not in the past.</exception>
-        /// <exception cref="EmployeeException">If hourly wage, hours worked, hours paid, or payment received is negative.</exception>
         public Employee(int id, string firstName, string lastName, DateTime dateOfBirth, string jobTitle, decimal hourlyWage, decimal hoursWorked, decimal hoursPaid, decimal paymentReceived)
         {
             // TODO: Validate that nullable arguments are not null, and otherwise throw an ArgumentNullException
