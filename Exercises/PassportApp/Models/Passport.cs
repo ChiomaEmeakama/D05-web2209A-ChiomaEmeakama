@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace PassportApp.Models
 {
-    public class Passport
+    public class Passport : ViewModel, INotifyPropertyChanged
     {
         public int Id { get; }
 
@@ -49,6 +50,8 @@ namespace PassportApp.Models
         private string lastName;
         private string country;
         private Passport passport;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public Passport(int id, string firstName, string lastName, DateTime dateOfBirth, string country)
         {

@@ -2,15 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace PassportApp.ViewModels
 {
-    internal class PassportListViewModel 
+    internal class PassportListViewModel : ViewModel, INotifyPropertyChanged
     {
         public ObservableCollection<Passport> Passports { get; }
         
@@ -34,8 +36,18 @@ namespace PassportApp.ViewModels
         }
 
 
-        public ObservableCollection<Passport> SelectedPassports { get; set; }
-        public ObservableCollection<Passport> DestinationCountry { get; set; }
+        public Passport SelectedPassports 
+            {
+                get => SelectedPassports;
+                set
+                {
+                    SelectedPassports = value;
+                    NotifyPropertyChanged(nameof(SelectedPassports))
+                }
+            }
+        public Passport DestinationCountry { get; set; }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public void Travel (object _)
         {

@@ -137,6 +137,7 @@ namespace EmployeeExam.Domain.Entities
         public void PayAmountDue()
         {
             // TODO: Pay the employee for all unpaid hours by updating the number of hours paid and the total amount of payment received
+            if ()
         }
     }
 }
