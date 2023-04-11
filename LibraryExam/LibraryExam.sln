@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryExam.Presentation", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryExam.Tests", "LibraryExam.Tests\LibraryExam.Tests.csproj", "{90A12AAD-A56F-49E3-AFB8-E658292CE1D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryExam.Utility", "..\LibraryExamFramework\LibraryExam.Utility\LibraryExam.Utility.csproj", "{50F5171E-1983-4567-A15D-1203B7C94EFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryExam.Utility", "LibraryExam.Utility\LibraryExam.Utility.csproj", "{A7B8B672-768D-4EE9-A4EE-BEAD0DD5D6BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{90A12AAD-A56F-49E3-AFB8-E658292CE1D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90A12AAD-A56F-49E3-AFB8-E658292CE1D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90A12AAD-A56F-49E3-AFB8-E658292CE1D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50F5171E-1983-4567-A15D-1203B7C94EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50F5171E-1983-4567-A15D-1203B7C94EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50F5171E-1983-4567-A15D-1203B7C94EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50F5171E-1983-4567-A15D-1203B7C94EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7B8B672-768D-4EE9-A4EE-BEAD0DD5D6BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7B8B672-768D-4EE9-A4EE-BEAD0DD5D6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7B8B672-768D-4EE9-A4EE-BEAD0DD5D6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7B8B672-768D-4EE9-A4EE-BEAD0DD5D6BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,6 @@
 ﻿using LibraryExam.Utility.ViewModels;
 using LibraryExam.Domain.Exceptions;
+using System.Security.Cryptography.X509Certificates;
 
 namespace LibraryExam.Domain.Entities
 {
@@ -61,7 +62,14 @@ namespace LibraryExam.Domain.Entities
                 // TODO
                 // Return true if and only if there is a due date and the due date is in the past
                 // (earlier than the current time in UTC)
-                return false;
+                if (DueDate != null && DueDate < DateTime.UtcNow)
+                {
+                    return true;
+                }
+
+                else
+
+                    return false;
             }
         }
         public TimeSpan TimeOverdue
@@ -72,6 +80,12 @@ namespace LibraryExam.Domain.Entities
                 // If the book is overdue, return the positive time span from the due date to the current time in UTC
                 // (Remember, use operators to do time math: DateTime - DateTime = TimeSpan)
                 // Otherwise, return TimeSpan.Zero
+                if (Overdue == true)
+                {
+                    TimeSpan timeOverdue = DateTime.UtcNow - dueDate.Value;
+                    return timeOverdue;
+                }
+
                 return TimeSpan.Zero;
             }
         }
@@ -82,12 +96,23 @@ namespace LibraryExam.Domain.Entities
             {
                 // TODO
                 // If the book is overdue, then calculate and return the positive late fee:
-                    // Get the total number of seconds overdue from the time overdue property (TimeSpan.TotalSeconds)
+                // Get the total number of seconds overdue from the time overdue property (TimeSpan.TotalSeconds)
+                if (Overdue == true)
+                {
+                    decimal lateFee = ((int)TimeOverdue.TotalSeconds) * lateFeePerSecond;
+
+                    if (lateFee > maxLateFee)
+                    {
+                        return maxLateFee;
+                    }
+                    else return lateFee;
                     // Calculate the late fee given the number of seconds overdue and a constant late fee per second of $1.95
                     // Round the late fee to two decimal points using Math.Round
                     // Return the late fee, or return the maximum late fee of $50.00 if the calculated late fee exceeds the maximum
-                // Otherwise, return $0.00
-                return 0;
+                    // Otherwise, return $0.00
+                }
+                else
+                    return (decimal)0.00;
             }
         }
 
@@ -109,7 +134,15 @@ namespace LibraryExam.Domain.Entities
         /// <exception cref="BookException">If title is empty or whitespace.</exception>
         public Book(string title)
             : this(id: 0, title, timesBorrowed: 0, borrower: null, borrowDate: null, dueDate: null)
-        { }
+        {
+            Id = Id;
+            title = title;
+            this.timesBorrowed = timesBorrowed;
+            this.borrower = borrower;
+            this.borrowDate = borrowDate;
+            this.dueDate = dueDate;
+
+        }
 
         /// <summary>
         /// Create a book with the given id, by copying the other properties of the original book. This copy constructor should be used
@@ -205,12 +238,35 @@ namespace LibraryExam.Domain.Entities
         {
             // TODO
             // If the borrower parameter is null, throw an ArgumentNullException
+            if (borrower == null)
+            {
+                throw new ArgumentNullException("Borrower must not be null.");
+            }
+
             // If the book is already borrowed, throw a BookException with a clear message, such as "Cannot borrow book because it is already borrowed."
+            if (Borrowed == true)
+            {
+                throw new BookException("Cannot borrow book because it is already borrowed.");
+            }
             // If the borrower parameter is empty or whitespace, throw a BookException with a clear message
+            if (string.IsNullOrWhiteSpace(borrower))
+            {
+                throw new BookException("Borrower must not be empty or a white space");
+            }
             // Increase the book’s TimesBorrowed by 1
+
+            TimesBorrowed++;
+
             // Set the book’s Borrower equal to the borrower parameter
+
+            Borrower = borrower;
+
             // Set the book’s BorrowDate equal to the present time in UTC
+
+            BorrowDate = DateTime.UtcNow;
+
             // Set the book’s DueDate equal to the BorrowDate plus a borrow duration of 30 seconds
+            DueDate = BorrowDate.Value.AddSeconds(30);
         }
 
         /// <summary>
@@ -225,12 +281,31 @@ namespace LibraryExam.Domain.Entities
         {
             // TODO
             // If the borrower parameter is null, throw an ArgumentNullException
+            if (borrower == null)
+            {
+                throw new ArgumentNullException("Borrower must not be null.");
+            }
             // If the book is not currently borrowed, throw a BookException with a clear message, such as "Cannot return book because it is not currently borrowed."
+            if (Borrowed == false)
+            {
+                throw new BookException("Cannot return book because it is not currently borrowed.");
+            }
             // If the borrower parameter is empty or whitespace, throw a BookException with a clear message
+            if (string.IsNullOrWhiteSpace(borrower))
+            {
+                throw new BookException("Borrower must not be empty or a white space");
+            }
             // If the book’s Borrower is not equal to the borrower parameter, throw a BookException with a clear message(because only the original borrower can return the book)
+            if (borrower != Borrower)
+            {
+                throw new BookException("because only the original borrower can return the book");
+            }
             // Set the book’s Borrower equal to null
+            Borrower = null;
             // Set the book’s BorrowDate equal to null
+            BorrowDate = null;
             // Set the book’s DueDate equal to the null
+            DueDate = null;
         }
     }
 }

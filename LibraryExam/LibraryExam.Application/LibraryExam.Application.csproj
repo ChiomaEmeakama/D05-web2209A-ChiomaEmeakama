@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LibraryExam.Utility\LibraryExam.Utility.csproj" />
     <ProjectReference Include="..\LibraryExam.Domain\LibraryExam.Domain.csproj" />
     <ProjectReference Include="..\LibraryExam.Persistence\LibraryExam.Persistence.csproj" />
+    <ProjectReference Include="..\LibraryExam.Utility\LibraryExam.Utility.csproj" />
   </ItemGroup>
 
 </Project>

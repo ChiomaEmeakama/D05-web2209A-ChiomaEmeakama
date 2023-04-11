@@ -3,6 +3,7 @@ using LibraryExam.Utility.Commands;
 using LibraryExam.Utility.ViewModels;
 using LibraryExam.Domain.Entities;
 using LibraryExam.Persistence.Repositories;
+using Microsoft.VisualBasic;
 
 namespace LibraryExam.Application.ViewModels
 {
@@ -53,8 +54,12 @@ namespace LibraryExam.Application.ViewModels
         {
             repository = new BookRepository();
 
+            List<Book> books = repository.GetAllBooks();
+
             // TODO: Use the repository to get a list of all books from the database
-            Books = new ObservableCollection<Book>(); // TODO: Create the Books observable collection by copying the list from the repository
+            Books = new ObservableCollection<Book>(books); // TODO: Create the Books observable collection by copying the list from the repository
+            
+
 
             selectedBook = null;
             name = string.Empty;
@@ -84,6 +89,11 @@ namespace LibraryExam.Application.ViewModels
                 // If the book was borrowed and updated correctly, set Message to display a clear success message, such as "Anna successfully borrowed Middlemarch."
                 // Otherwise, if a BookException occurred, catch the exception and set Message to display the exception’s Message as an error message
             // Otherwise, set Message to display a clear error message, such as "Error: Select a book to borrow."
+            if(SelectedBook is not null)
+            {
+                SelectedBook.Borrow(name);
+
+            }
         }
 
         private void Return(object _)
@@ -98,6 +108,7 @@ namespace LibraryExam.Application.ViewModels
                     // Otherwise, if the book was returned on time, display a success message including only the name and title
                 // Otherwise, if a BookException occurred, catch the exception and set Message to display the exception’s Message as an error message
             // Otherwise, set Message to display a clear error message
+
         }
     }
 }

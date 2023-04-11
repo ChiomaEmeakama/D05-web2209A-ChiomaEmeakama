@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LibraryExam.Utility\LibraryExam.Utility.csproj" />
     <ProjectReference Include="..\LibraryExam.Application\LibraryExam.Application.csproj" />
     <ProjectReference Include="..\LibraryExam.Domain\LibraryExam.Domain.csproj" />
+    <ProjectReference Include="..\LibraryExam.Utility\LibraryExam.Utility.csproj" />
   </ItemGroup>
 
 </Project>
