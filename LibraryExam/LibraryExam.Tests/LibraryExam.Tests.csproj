@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryExam.Utility\LibraryExam.Utility.csproj" />
+    <ProjectReference Include="..\LibraryExam.Application\LibraryExam.Application.csproj" />
+    <ProjectReference Include="..\LibraryExam.Domain\LibraryExam.Domain.csproj" />
+    <ProjectReference Include="..\LibraryExam.Persistence\LibraryExam.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,180 @@
+﻿<UserControl x:Class="LibraryExam.Presentation.Views.LibraryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="10, 5"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Separator">
+            <Setter Property="Width" Value="16"/>
+            <Setter Property="Height" Value="16"/>
+            <Setter Property="Opacity" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+        </Style>
+        <Style TargetType="Border">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#cccccc"/>
+        </Style>
+    </UserControl.Resources>
+
+    <DockPanel>
+
+        <TextBlock Text="{Binding Path=Message, FallbackValue='Select a book.'}"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap"
+                   MaxWidth="500"
+                   DockPanel.Dock="Bottom"/>
+
+        <Separator DockPanel.Dock="Bottom"/>
+
+        <Border HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                DockPanel.Dock="Bottom">
+
+            <DockPanel Margin="16">
+
+                <Label Content="Name" Padding="0,5" DockPanel.Dock="Left"/>
+
+                <Separator DockPanel.Dock="Left"/>
+
+                <Button Content="Return" Command="{Binding Path=ReturnCommand}" DockPanel.Dock="Right"/>
+
+                <Separator DockPanel.Dock="Right"/>
+
+                <Button Content="Borrow" Command="{Binding Path=BorrowCommand}" DockPanel.Dock="Right"/>
+
+                <Separator DockPanel.Dock="Right"/>
+
+                <TextBox Text="{Binding Path=Name}" DockPanel.Dock="Right"/>
+
+            </DockPanel>
+
+        </Border>
+
+        <Separator DockPanel.Dock="Bottom"/>
+
+        <Border HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                MinWidth="260"
+                MinHeight="200"
+                DockPanel.Dock="Right">
+
+            <StackPanel Orientation="Vertical"
+                        VerticalAlignment="Center"
+                        Margin="16">
+
+                <StackPanel.Resources>
+
+                    <Style TargetType="Separator">
+                        <Setter Property="Width" Value="10"/>
+                        <Setter Property="Height" Value="10"/>
+                        <Setter Property="Opacity" Value="0"/>
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
+
+                </StackPanel.Resources>
+
+                <Label Content="{Binding Path=SelectedBook.Title, FallbackValue='No selected book'}"
+                        FontSize="14"
+                        HorizontalContentAlignment="Center"/>
+
+                <Separator/>
+
+                <Grid HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="120"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Times borrowed"
+                           Grid.Column="0" Grid.Row="0"/>
+                    <Label Content="{Binding Path=SelectedBook.TimesBorrowed, TargetNullValue=' '}"
+                           Grid.Column="1" Grid.Row="0"/>
+
+                    <Label Content="Borrower"
+                           Grid.Column="0" Grid.Row="1"/>
+                    <Label Content="{Binding Path=SelectedBook.Borrower, TargetNullValue=' '}"
+                           Grid.Column="1" Grid.Row="1"/>
+
+                    <Label Content="Borrow date"
+                           Grid.Column="0" Grid.Row="2"/>
+                    <Label Content="{Binding Path=SelectedBook.BorrowDate, TargetNullValue=' '}"
+                           ContentStringFormat="yyyy-MM-dd HH:mm:ss"
+                           Grid.Column="1" Grid.Row="2"/>
+
+                    <Label Content="Due date"
+                           Grid.Column="0" Grid.Row="3"/>
+                    <Label Content="{Binding Path=SelectedBook.DueDate, TargetNullValue=' '}"
+                           ContentStringFormat="yyyy-MM-dd HH:mm:ss"
+                           Grid.Column="1" Grid.Row="3"/>
+
+                    <Label Content="Seconds overdue"
+                           Grid.Column="0" Grid.Row="4"/>
+                    <Label Content="{Binding Path=SelectedBook.TimeOverdue.TotalSeconds, TargetNullValue=' '}"
+                           ContentStringFormat="0"
+                           Grid.Column="1" Grid.Row="4"/>
+
+                    <Label Content="Late fee"
+                           Grid.Column="0" Grid.Row="5"/>
+                    <Label Content="{Binding Path=SelectedBook.LateFee, TargetNullValue=' '}"
+                           ContentStringFormat="{}{0:c}"
+                           Grid.Column="1" Grid.Row="5"/>
+
+                </Grid>
+
+                <Separator/>
+
+                <Button Content="Refresh"
+                        Command="{Binding RefreshCommand}"
+                        HorizontalAlignment="Right"/>
+
+            </StackPanel>
+
+        </Border>
+
+        <Separator DockPanel.Dock="Right"/>
+
+        <DataGrid ItemsSource="{Binding Path=Books}"
+                  SelectedItem="{Binding Path=SelectedBook}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  CanUserDeleteRows="False"
+                  SelectionMode="Single"
+                  MinHeight="100"
+                  DockPanel.Dock="Left">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Id"
+                                    Binding="{Binding Path=Id}"
+                                    Width="Auto"/>
+                <DataGridTextColumn Header="Title"
+                                    Binding="{Binding Path=Title}"
+                                    Width="Auto"/>
+                <DataGridCheckBoxColumn Header="Borrowed"
+                                        Binding="{Binding Path=Borrowed, Mode=OneWay}"
+                                        Width="Auto"/>
+
+            </DataGrid.Columns>
+            
+        </DataGrid>
+        
+    </DockPanel>
+    
+</UserControl>

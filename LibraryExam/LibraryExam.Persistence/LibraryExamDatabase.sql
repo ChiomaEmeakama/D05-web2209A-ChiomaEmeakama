@@ -1,0 +1,120 @@
+USE [master]
+GO
+IF EXISTS (SELECT name FROM master.sys.databases WHERE name = N'LibraryExamDatabase')
+BEGIN
+	ALTER DATABASE [LibraryExamDatabase] SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+	DROP DATABASE [LibraryExamDatabase]
+END
+CREATE DATABASE [LibraryExamDatabase]
+ CONTAINMENT = NONE
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [LibraryExamDatabase] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [LibraryExamDatabase].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [LibraryExamDatabase] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET RECOVERY FULL 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET  MULTI_USER 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [LibraryExamDatabase] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [LibraryExamDatabase] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'LibraryExamDatabase', N'ON'
+GO
+ALTER DATABASE [LibraryExamDatabase] SET QUERY_STORE = OFF
+GO
+
+USE [LibraryExamDatabase]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+DROP TABLE IF EXISTS [dbo].[Books]
+GO
+CREATE TABLE [dbo].[Books](
+	[Id] [int] IDENTITY(10001,1) NOT NULL,
+	[Title] [nvarchar](max) NOT NULL,
+	[TimesBorrowed] [int] NOT NULL,
+	[Borrower] [nvarchar](max) NULL,
+	[BorrowDate] [datetime2](3) NULL,
+	[DueDate] [datetime2](3) NULL,
+ CONSTRAINT [PK_Books] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Books] ON 
+GO
+INSERT [dbo].[Books] ([Id], [Title], [TimesBorrowed], [Borrower], [BorrowDate], [DueDate]) VALUES (10001, N'War and Peace', 12, NULL, NULL, NULL)
+GO
+INSERT [dbo].[Books] ([Id], [Title], [TimesBorrowed], [Borrower], [BorrowDate], [DueDate]) VALUES (10002, N'Mrs Dalloway', 19, N'Catherine', CAST(N'2023-04-02T13:35:47.6120000' AS DateTime2), CAST(N'2023-04-02T13:36:17.6120000' AS DateTime2))
+GO
+INSERT [dbo].[Books] ([Id], [Title], [TimesBorrowed], [Borrower], [BorrowDate], [DueDate]) VALUES (10003, N'The Brothers Karamazov', 25, N'Anna', CAST(N'2023-04-08T09:12:24.4580000' AS DateTime2), CAST(N'2023-04-08T09:12:54.4580000' AS DateTime2))
+GO
+INSERT [dbo].[Books] ([Id], [Title], [TimesBorrowed], [Borrower], [BorrowDate], [DueDate]) VALUES (10004, N'Nineteen Eighty-Four', 18, NULL, NULL, NULL)
+GO
+INSERT [dbo].[Books] ([Id], [Title], [TimesBorrowed], [Borrower], [BorrowDate], [DueDate]) VALUES (10005, N'Middlemarch', 11, NULL, NULL, NULL)
+GO
+SET IDENTITY_INSERT [dbo].[Books] OFF
+GO
+USE [master]
+GO
+ALTER DATABASE [LibraryExamDatabase] SET  READ_WRITE 
+GO
